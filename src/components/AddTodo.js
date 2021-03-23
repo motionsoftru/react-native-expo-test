@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, StyleSheet, TextInput, Button, Alert } from "react-native";
+import { I18N } from "../i18n/i18n";
 import { THEME } from "../themes/theme";
 
 export const AddTodo = ({ onSubmit }) => {
@@ -10,7 +11,12 @@ export const AddTodo = ({ onSubmit }) => {
       onSubmit(value);
       setValue("");
     } else {
-      Alert.alert("Ошибка", "Название дела не может быть пустым");
+      Alert.alert(I18N.RU.ERROR_TITLE, I18N.RU.TASK_NAME_CANNOT_BE_EMPTY, [
+        {
+          text: I18N.RU.CLOSE_BTN,
+          style: "cancel",
+        },
+      ]);
     }
   };
 
@@ -20,12 +26,12 @@ export const AddTodo = ({ onSubmit }) => {
         style={styles.input}
         onChangeText={setValue}
         value={value}
-        placeholder="Введите название дела"
+        placeholder={I18N.RU.ENTER_NAME_TASK}
         autoCorrect={false}
         autoCapitalize="none"
         //keyboardType='phone-pad'
       />
-      <Button title="Добавить" onPress={handler} />
+      <Button title={I18N.RU.ADD_BTN} onPress={handler} />
     </View>
   );
 };
@@ -38,9 +44,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   input: {
-    width: "70%",
-    borderStyle: "solid",
-    borderBottomWidth: 1,
-    borderBottomColor: THEME.DEFAULT_COLOR,
+    width: "65%",
+    ...THEME.TEXT_INPUT,
   },
 });

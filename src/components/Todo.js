@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 export const Todo = ({ todo, onRemove, onOpen }) => {
   const onLongPressHandler = () => {
-    onRemove(todo.id);
+    onRemove(todo);
   };
 
   return (
