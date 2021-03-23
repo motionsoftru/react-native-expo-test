@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, StyleSheet, TextInput, Button, Alert } from "react-native";
-import { THEME } from "../ui/theme";
+import { THEME } from "../themes/theme";
 
 export const AddTodo = ({ onSubmit }) => {
   const [value, setValue] = useState("");
