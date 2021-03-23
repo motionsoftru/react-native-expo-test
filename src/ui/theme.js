@@ -1,0 +1,6 @@
+export const THEME = {
+  DANGER_COLOR: "#F93154",
+  WARNING_COLOR: "#FFA900",
+  INFO_COLOR: "#39C0ED",
+  DEFAULT_COLOR: "#242424",
+};

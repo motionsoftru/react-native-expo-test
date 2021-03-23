@@ -6,7 +6,10 @@ import { TodoScreen } from "./src/screens/TodoScreen";
 
 export default function App() {
   const [todoId, setTodoId] = useState(null);
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([
+    { id: "1", title: "Один" },
+    { id: "2", title: "Два" },
+  ]);
 
   const addTodo = (title) => {
     setTodos((prev) => [
@@ -23,21 +26,30 @@ export default function App() {
   };
 
   let screen = (
-    <MainScreen todos={todos} addTodo={addTodo} removeTodo={removeTodo} />
+    <MainScreen
+      todos={todos}
+      addTodo={addTodo}
+      removeTodo={removeTodo}
+      openTodo={setTodoId}
+    />
   );
 
   if (todoId) {
-    screen = <TodoScreen />;
+    const selectedTodo = todos.find((todo) => todo.id === todoId);
+    screen = <TodoScreen goBack={() => setTodoId(null)} todo={selectedTodo} />;
   }
 
   return (
     <View style={styles.container}>
       <Navbar title="My app" />
-      {screen}
+      <View style={styles.screens}>{screen}</View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {},
+  screens: {
+    paddingHorizontal: 20,
+  },
 });
