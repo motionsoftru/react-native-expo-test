@@ -8,10 +8,7 @@ import { THEME } from "./src/themes/theme";
 
 export default function App() {
   const [todoId, setTodoId] = useState(null);
-  const [todos, setTodos] = useState([
-    { id: "1", title: "Один" },
-    { id: "2", title: "Два" },
-  ]);
+  const [todos, setTodos] = useState([{ id: "1", title: "Один" }]);
 
   const addTodo = (title) => {
     setTodos((prev) => [
