@@ -1,15 +1,35 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Alert, Button, BackHandler } from "react-native";
+import * as Font from "expo-font";
+import AppLoading from "expo-app-loading";
+
 import { Navbar } from "./src/components/Navbar";
 import { I18N } from "./src/i18n/i18n";
 import { MainScreen } from "./src/screens/MainScreen";
 import { TodoScreen } from "./src/screens/TodoScreen";
 import { THEME } from "./src/themes/theme";
 
+async function loadApp() {
+  await Font({
+    "openSans-regular": require("./assets/fonts/OpenSans-Regular.ttf"),
+    "openSans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
+  });
+}
+
 export default function App() {
+  const [isRaeady, setIsRaeady] = useState(false);
   const [todoId, setTodoId] = useState(null);
   const [todos, setTodos] = useState([{ id: "1", title: "Один" }]);
 
+  if (!isRaeady) {
+    return (
+      <AppLoading
+        startAsync={loadApp}
+        onError={(err) => console.log(err)}
+        onFinish={setIsRaeady(true)}
+      />
+    );
+  }
   const addTodo = (title) => {
     setTodos((prev) => [
       ...prev,
