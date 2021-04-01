@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text, Button } from "react-native";
+import { View, StyleSheet, Button } from "react-native";
 import { EditModal } from "../components/EditModal";
 import { AppCard } from "../components/ui/AppCard";
+import { AppTextBold } from "../components/ui/AppTextBold";
 import { I18N } from "../i18n/i18n";
 import { THEME } from "../themes/theme";
 
@@ -27,7 +28,7 @@ export const TodoScreen = ({ removeTodo, goBack, todo, onSave }) => {
       />
 
       <AppCard style={styles.card}>
-        <Text style={styles.title}>{todo.title}</Text>
+        <AppTextBold style={styles.title}>{todo.title}</AppTextBold>
         <Button
           title={I18N.RU.EDIT_BTN}
           color={THEME.INFO_COLOR}
@@ -58,7 +59,8 @@ const styles = StyleSheet.create({
   buttons: THEME.BUTTONS_WRAPPER,
   button: THEME.BUTTONS_WRAPPER_BUTTON,
   title: {
-    fontSize: 20,
+    //fontSize: 20,
+    //fontWeight: "900",
   },
   card: {
     marginBottom: 20,
