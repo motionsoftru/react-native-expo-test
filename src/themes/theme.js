@@ -10,7 +10,7 @@ export const THEME = {
     marginTop: 10,
   },
   BUTTONS_WRAPPER_BUTTON: {
-    width: "40%",
+    width: "45%",
   },
   MODAL_WRAPPER: {
     flex: 1,
@@ -23,4 +23,8 @@ export const THEME = {
     borderBottomWidth: 1,
     borderBottomColor: "#242424",
   },
+  BUTTONS_BORDER_RADIUS: 4,
+  BUTTONS_FONT_SIZE: 16,
+  APP_BACKGROUND: "#F1F0DD",
+  APP_PADDING_H: 20,
 };

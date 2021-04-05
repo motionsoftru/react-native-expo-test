@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { THEME } from "../../themes/theme";
 
 export const AppCard = (props) => {

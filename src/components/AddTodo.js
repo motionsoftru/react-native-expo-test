@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { View, StyleSheet, TextInput, Button, Alert } from "react-native";
+import { View, StyleSheet, TextInput, Alert, Keyboard } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+import { AppButton } from "../components/ui/AppButton";
 import { I18N } from "../i18n/i18n";
 import { THEME } from "../themes/theme";
 
@@ -10,6 +12,7 @@ export const AddTodo = ({ onSubmit }) => {
     if (value.trim()) {
       onSubmit(value);
       setValue("");
+      Keyboard.dismiss();
     } else {
       Alert.alert(I18N.RU.ERROR_TITLE, I18N.RU.TASK_NAME_CANNOT_BE_EMPTY, [
         {
@@ -31,7 +34,14 @@ export const AddTodo = ({ onSubmit }) => {
         autoCapitalize="none"
         //keyboardType='phone-pad'
       />
-      <Button title={I18N.RU.ADD_BTN} onPress={handler} />
+      <AppButton onPress={handler} color={THEME.INFO_COLOR}>
+        <AntDesign name="addfile" size={THEME.BUTTONS_FONT_SIZE} />
+      </AppButton>
+      {/* <AntDesign.Button onPress={handler} name="addfile">
+        {I18N.RU.ADD_BTN}
+      </AntDesign.Button> */}
+      {/* <AntDesign name="addfile" size={24} color="black" /> */}
+      {/* <Button title={I18N.RU.ADD_BTN} onPress={handler} /> */}
     </View>
   );
 };
@@ -44,7 +54,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   input: {
-    width: "65%",
+    width: "70%",
     ...THEME.TEXT_INPUT,
   },
 });

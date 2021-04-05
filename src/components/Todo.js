@@ -34,6 +34,6 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   title: {
-    fontFamily: "openSans-bold",
+    //fontFamily: "openSans-bold",
   },
 });

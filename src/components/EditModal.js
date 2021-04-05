@@ -1,12 +1,6 @@
 import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  TextInput,
-  Button,
-  Modal,
-  Alert,
-} from "react-native";
+import { View, StyleSheet, TextInput, Modal, Alert } from "react-native";
+import { AppButton } from "../components/ui/AppButton";
 import { I18N } from "../i18n/i18n";
 import { THEME } from "../themes/theme";
 
@@ -42,21 +36,25 @@ export const EditModal = ({ visible, onCansel, value, onSave }) => {
         />
         <View style={styles.buttons}>
           <View style={styles.button}>
-            <Button
+            {/* <Button
               title={I18N.RU.SAVE_BTN}
               onPress={saveHandler}
               color={THEME.INFO_COLOR}
-            />
+            /> */}
+            <AppButton onPress={saveHandler} color={THEME.INFO_COLOR}>
+              {I18N.RU.SAVE_BTN}
+            </AppButton>
           </View>
           <View style={styles.button}>
-            <Button
-              title={I18N.RU.CANCEL_BTN}
+            <AppButton
               onPress={() => {
                 setTitle(value);
                 onCansel();
               }}
               color={THEME.DEFAULT_COLOR}
-            />
+            >
+              {I18N.RU.CANCEL_BTN}
+            </AppButton>
           </View>
         </View>
       </View>

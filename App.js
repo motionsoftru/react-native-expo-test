@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Alert, Button, BackHandler } from "react-native";
+import { StyleSheet, View, Alert, BackHandler } from "react-native";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
+import { AntDesign } from "@expo/vector-icons";
 
 import { Navbar } from "./src/components/Navbar";
 import { I18N } from "./src/i18n/i18n";
 import { MainScreen } from "./src/screens/MainScreen";
 import { TodoScreen } from "./src/screens/TodoScreen";
+import { AppButton } from "./src/components/ui/AppButton";
 import { THEME } from "./src/themes/theme";
 
 async function loadApp() {
@@ -98,11 +100,14 @@ export default function App() {
       <Navbar title={I18N.RU.APP_NAME} />
       <View style={styles.screens}>{screen}</View>
       <View style={styles.buttons}>
-        <Button
-          title={I18N.RU.EXIT_BTN}
-          onPress={exitHandler}
-          color={THEME.DEFAULT_COLOR}
-        />
+        <AppButton onPress={exitHandler} color={THEME.DEFAULT_COLOR}>
+          <AntDesign
+            name="closesquareo"
+            size={THEME.BUTTONS_FONT_SIZE}
+            color="#fff"
+          />{" "}
+          {I18N.RU.EXIT_BTN}
+        </AppButton>
       </View>
     </View>
   );
@@ -111,9 +116,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: THEME.APP_BACKGROUND,
   },
   screens: {
-    paddingHorizontal: 20,
+    paddingHorizontal: THEME.APP_PADDING_H,
   },
   buttons: {
     padding: 20,
