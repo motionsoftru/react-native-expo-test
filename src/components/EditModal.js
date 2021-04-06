@@ -23,6 +23,12 @@ export const EditModal = ({ visible, onCansel, value, onSave }) => {
       onSave(title);
     }
   };
+
+  const canselHandler = () => {
+    setTitle(value);
+    onCansel();
+  };
+
   return (
     <Modal visible={visible} animationType="slide" transparent={true}>
       <View style={styles.wrapper}>
@@ -46,13 +52,7 @@ export const EditModal = ({ visible, onCansel, value, onSave }) => {
             </AppButton>
           </View>
           <View style={styles.button}>
-            <AppButton
-              onPress={() => {
-                setTitle(value);
-                onCansel();
-              }}
-              color={THEME.DEFAULT_COLOR}
-            >
+            <AppButton onPress={canselHandler} color={THEME.DEFAULT_COLOR}>
               {I18N.RU.CANCEL_BTN}
             </AppButton>
           </View>
